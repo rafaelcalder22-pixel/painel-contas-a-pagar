@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="robots" content="noindex,nofollow"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Contas a Pagar</title>
+<style>
+:root{--bg:#f0f2f5;--card:#fff;--tx:#1a1a2e;--mut:#6b7280;--line:#e5e7eb;--hov:#f9fafb;--cell:#374151;--lnk:#2563eb;--pos:#059669;--neg:#dc2626;--sel:#fff;--on:#eff6ff;
+--b-bg:#dbeafe;--b-tx:#1d4ed8;--g-bg:#d1fae5;--g-tx:#065f46;--r-bg:#fee2e2;--r-tx:#991b1b;--r-v:#dc2626;--p-bg:#ede9fe;--p-tx:#5b21b6;--p-v:#6d28d9;--o-bg:#ffedd5;--o-tx:#92400e;--o-v:#d97706;--bar:#fca5a5;color-scheme:light}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1218;--card:#181c25;--tx:#e8eaf0;--mut:#9aa3b2;--line:#2a303c;--hov:#1e232e;--cell:#c4cad6;--lnk:#7aa2ff;--pos:#34d399;--neg:#f87171;--sel:#181c25;--on:#1b2a4a;--b-bg:#1b2a4a;--b-tx:#93b4ff;--g-bg:#12342b;--g-tx:#6ee7b7;--r-bg:#3b1a1d;--r-tx:#fca5a5;--r-v:#f87171;--p-bg:#2a2147;--p-tx:#c4b5fd;--p-v:#a78bfa;--o-bg:#3a2a12;--o-tx:#fdba74;--o-v:#fbbf24;--bar:#7f2d33;color-scheme:dark}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.container{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 5rem}
+h1{font-size:26px;font-weight:700}.ph{display:flex;align-items:center;gap:12px;margin-bottom:.3rem}.sub{font-size:14px;color:var(--mut);margin-bottom:1.25rem}
+.tabs{display:flex;gap:8px;margin-bottom:1.25rem;flex-wrap:wrap}.tab{border:1px solid var(--line);background:var(--card);color:var(--cell);padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer}.tab.on{background:#2563eb;border-color:#2563eb;color:#fff}
+.fc{background:var(--card);border-radius:12px;border:1px solid var(--line);padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem}
+.fg label{display:block;font-size:12px;color:var(--mut);margin-bottom:6px}
+select,.gc input{width:100%;padding:10px 36px 10px 12px;border:1px solid var(--line);border-radius:8px;font-size:14px;color:var(--tx);background:var(--sel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat right 12px center;appearance:none;cursor:pointer;outline:none}
+select:focus,.gc input:focus{border-color:var(--lnk)}
+.kg{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:1.5rem}@media(max-width:900px){.kg{grid-template-columns:repeat(3,1fr)}}@media(max-width:500px){.kg{grid-template-columns:1fr 1fr}}
+.k{border-radius:14px;padding:1.1rem 1.2rem}.k.b{background:var(--b-bg)}.k.g{background:var(--g-bg)}.k.r{background:var(--r-bg)}.k.p{background:var(--p-bg)}.k.o{background:var(--o-bg)}
+.kt{font-size:12px;font-weight:600;margin-bottom:.75rem}.k.b .kt,.k.b .kv{color:var(--b-tx)}.k.g .kt,.k.g .kv{color:var(--g-tx)}.k.r .kt{color:var(--r-tx)}.k.r .kv{color:var(--r-v)}.k.p .kt{color:var(--p-tx)}.k.p .kv{color:var(--p-v)}.k.o .kt{color:var(--o-tx)}.k.o .kv{color:var(--o-v)}
+.kv{font-size:19px;font-weight:700;margin-bottom:4px;word-break:break-word}.kl{font-size:11px;color:var(--mut)}
+.card{background:var(--card);border-radius:12px;border:1px solid var(--line);padding:1.5rem;margin-bottom:1.25rem}.card h2{font-size:13px;font-weight:500;color:var(--mut);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}.ss{font-size:13px;color:var(--lnk);margin-bottom:1.25rem}
+.tw{overflow-x:auto}.tw.sc{max-height:520px;overflow-y:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;padding:11px 14px;font-size:11px;font-weight:600;color:var(--cell);border-bottom:1px solid var(--line);white-space:nowrap;text-transform:uppercase;letter-spacing:.03em;position:sticky;top:0;background:var(--hov)}
+th.n,td.n{text-align:right}td{padding:11px 14px;border-bottom:1px solid var(--line);color:var(--cell);white-space:nowrap}tbody tr:hover td{background:var(--hov)}tr.on td{background:var(--on)}tfoot td{font-weight:700;border-top:2px solid var(--line);border-bottom:none;color:var(--tx)}
+.pos{color:var(--pos);font-weight:600}.neg{color:var(--neg);font-weight:600}.bar{display:inline-block;height:8px;border-radius:4px;vertical-align:middle;margin-right:8px;background:var(--bar)}
+.bd{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;font-weight:500}.bd.r{background:var(--r-bg);color:var(--r-tx)}.bd.g{background:var(--g-bg);color:var(--g-tx)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem}@media(max-width:900px){.g2{grid-template-columns:1fr}}.g2 .card{margin-bottom:0}
+input[type=checkbox]{width:17px;height:17px;cursor:pointer;accent-color:#2563eb}
+.ab{position:sticky;bottom:calc(env(safe-area-inset-bottom,0px) + 10px);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;box-shadow:0 4px 18px rgba(0,0,0,.12);margin-top:1rem}
+.ab b{color:var(--lnk)}.btn{border:0;border-radius:8px;padding:10px 16px;font-size:14px;font-weight:600;cursor:pointer;background:#2563eb;color:#fff}.btn.sec{background:var(--hov);color:var(--cell);border:1px solid var(--line)}.btn:disabled{opacity:.45;cursor:not-allowed}
+#gate .gc{max-width:360px;margin:12vh auto 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:2rem 1.75rem;text-align:center}.gc .fg{text-align:left;margin-bottom:1rem}.gc input{background-image:none;cursor:text}.gc .btn{width:100%}#gerr{margin-top:.9rem;font-size:13px;color:var(--neg);min-height:1.2em}
+#print{display:none}
+@media print{@page{size:A4 landscape;margin:10mm}html,body{background:#fff!important}#app,#gate{display:none!important}#print{display:block;color:#000;font-size:10px;font-family:Arial,sans-serif}#print h1{font-size:16px;margin-bottom:2px}#print .pm{font-size:10px;color:#444;margin-bottom:8px}#print table{width:100%;border-collapse:collapse;font-size:10px}#print th,#print td{border:1px solid #999;padding:3px 5px;color:#000;white-space:normal;background:#fff;position:static}#print th{background:#e8e8e8;font-size:9px}#print tr.sub td,#print tfoot td{font-weight:700;background:#f2f2f2}#print tr{break-inside:avoid}#print thead{display:table-header-group}}
+</style>
+</head>
+<body>
+<div id="gate"><div class="gc"><div style="font-size:30px">🔒</div><h1>Acesso restrito</h1><p class="sub" style="margin:.4rem 0 1.2rem">Digite a senha para abrir o painel de contas a pagar.</p><div class="fg"><label for="gpw">Senha</label><input id="gpw" type="password" autocomplete="current-password"/></div><button class="btn" id="gbt" onclick="entrar()">Entrar</button><div id="gerr" role="alert"></div></div></div>
+<div class="container" id="app" style="display:none">
+  <div class="ph"><span style="font-size:26px">💳</span><h1>Contas a Pagar</h1></div>
+  <p class="sub" id="sub">—</p>
+  <div class="tabs"><button class="tab on" id="bt-p" onclick="aba('p')">📊 Painel</button><button class="tab" id="bt-a" onclick="aba('a')">🖨️ Seleção para pagamento</button></div>
+  <section id="s-p">
+    <div id="fb-p"></div>
+    <div class="kg">
+      <div class="k b"><div class="kt">$ Total a pagar</div><div class="kv" id="k1">—</div><div class="kl" id="k1l">—</div></div>
+      <div class="k r"><div class="kt">⚠ Vencido</div><div class="kv" id="k2">—</div><div class="kl" id="k2l">—</div></div>
+      <div class="k g"><div class="kt">↗ A vencer</div><div class="kv" id="k3">—</div><div class="kl" id="k3l">—</div></div>
+      <div class="k p"><div class="kt">📊 % Vencido</div><div class="kv" id="k4">—</div><div class="kl">Do valor a pagar</div></div>
+      <div class="k o"><div class="kt">⏱ Maior atraso</div><div class="kv" id="k5">—</div><div class="kl" id="k5l">—</div></div>
+    </div>
+    <div class="g2">
+      <div class="card"><h2>⚠ Vencidas por faixa de atraso</h2><div class="ss">Dias em atraso desde o vencimento</div><div class="tw"><table><thead><tr><th>Faixa</th><th class="n">Títulos</th><th class="n">Valor a pagar</th><th class="n">%</th></tr></thead><tbody id="tbV"></tbody></table></div></div>
+      <div class="card"><h2>↗ A vencer por faixa de prazo</h2><div class="ss">Dias até o vencimento</div><div class="tw"><table><thead><tr><th>Faixa</th><th class="n">Títulos</th><th class="n">Valor a pagar</th><th class="n">%</th></tr></thead><tbody id="tbA"></tbody></table></div></div>
+    </div>
+    <div class="card"><h2>📍 Por Regional</h2><div class="ss">Vencido x a vencer</div><div class="tw"><table id="tR"></table></div></div>
+    <div class="card"><h2>🏙️ Por Praça</h2><div class="ss">Vencido x a vencer</div><div class="tw"><table id="tP"></table></div></div>
+    <div class="card"><h2>🏢 Por Empreendimento</h2><div class="ss">Vencido x a vencer</div><div class="tw"><table id="tE"></table></div></div>
+    <div class="card"><h2>👥 Maiores favorecidos por Praça</h2><div class="ss">Os 5 maiores valores a pagar em cada praça (respeita os filtros)</div><div class="tw"><table><thead><tr><th>#</th><th>Favorecido</th><th class="n">Títulos</th><th class="n">Vencido</th><th class="n">A vencer</th><th class="n">Total</th><th class="n">% da praça</th></tr></thead><tbody id="tbT"></tbody></table></div></div>
+    <div class="card"><h2>📋 Detalhamento dos títulos</h2><div class="ss" id="ssD">—</div><div class="tw sc"><table><thead><tr><th>Praça</th><th>Empreendimento</th><th>Favorecido</th><th class="n">Vencimento</th><th class="n">Situação</th><th class="n">Valor a pagar</th><th class="n">Valor doc. fiscal</th></tr></thead><tbody id="tbD"></tbody></table></div></div>
+  </section>
+  <section id="s-a" hidden>
+    <div id="fb-a"></div>
+    <div class="card"><h2>🖨️ Seleção para pagamento</h2><div class="ss" id="ssX">Marque as contas que deseja pagar e gere o extrato para impressão.</div>
+      <div class="tw sc"><table><thead><tr><th><input type="checkbox" id="chkAll" title="Marcar todos os exibidos"></th><th>Empreendimento</th><th class="n">Empresa</th><th>Obra</th><th class="n">Proc.</th><th>Confirmado</th><th>Cheque nominal</th><th class="n">Vencimento</th><th class="n">Prorrogação</th><th class="n">Valor a pagar</th><th class="n">Valor doc. fiscal</th></tr></thead><tbody id="tbX"></tbody></table></div></div>
+    <div class="ab"><div id="selInfo">Nenhuma conta selecionada</div><div style="display:flex;gap:8px"><button class="btn sec" id="btnClr">Limpar seleção</button><button class="btn" id="btnExt" disabled>🖨️ Gerar extrato</button></div></div>
+  </section>
+</div>
+<div id="print"></div>
+<script>
+const ENC=__ENC__;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function cl(s){return String(s).replace(/^[\d.\/-]+\s+/,'').replace(/\s+\d{8,}$/,'').trim()}
+const R$=n=>'R$\u00a0'+n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const dt=s=>s.split('-').reverse().join('/');
+const pc=n=>n.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+'%';
+const nm=n=>n.toLocaleString('pt-BR');
+const S=(a,f)=>a.reduce((s,x)=>s+f(x),0);
+let L,D,HOJE;const sel=new Set();let shown=[];
+/* ---------- filtros (mesmo conjunto nas duas abas) ---------- */
+const uniq=(a,k)=>[...new Set(a.map(x=>x[k]))].sort();
+function fill(id,list,all){$(id).innerHTML='<option value="">'+all+'</option>'+list.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join('')}
+const g=(px,k)=>$(px+k).value;
+const FX={'':()=>true,'1':a=>a>=1&&a<=10,'2':a=>a>=11&&a<=20,'3':a=>a>=21&&a<=30,'4':a=>a>30};
+function flt(px){const r=g(px,'R'),p=g(px,'P'),e=g(px,'E'),c=g(px,'G'),f=g(px,'D');
+  return D.filter(x=>(!r||x.r===r)&&(!p||x.p===p)&&(!e||x.e===e)&&(!c||x.g===c)&&FX[f](Math.abs(x.d)))}
+function casc(px,from){const r=g(px,'R');
+  if(from==='R')fill(px+'P',uniq(D.filter(x=>!r||x.r===r),'p'),'Todas as praças');
+  const p=g(px,'P');fill(px+'E',uniq(D.filter(x=>(!r||x.r===r)&&(!p||x.p===p)),'e'),'Todos os empreendimentos');refresh(px)}
+const refresh=px=>px==='p'?renderPainel():renderPagar();
+function initF(px){
+  $('fb-'+px).innerHTML='<div class="fc">'+[['R','📍 Regional'],['P','🏙️ Praça'],['E','🏢 Empreendimento'],['G','💼 Cargo'],['D','📅 Faixa de dias (atraso ou prazo)']].map(([k,l])=>`<div class="fg"><label>${l}</label><select id="${px}${k}"></select></div>`).join('')+'</div>';
+  fill(px+'R',L.R.slice().sort(),'Todas as regionais');fill(px+'P',uniq(D,'p'),'Todas as praças');fill(px+'E',uniq(D,'e'),'Todos os empreendimentos');fill(px+'G',L.G.slice().sort(),'Todos os cargos');
+  $(px+'D').innerHTML='<option value="">Todas as faixas</option><option value="1">1 a 10 dias</option><option value="2">11 a 20 dias</option><option value="3">21 a 30 dias</option><option value="4">Acima de 30 dias</option>';
+  $(px+'R').onchange=()=>casc(px,'R');$(px+'P').onchange=()=>casc(px,'P');['E','G','D'].forEach(k=>$(px+k).onchange=()=>refresh(px));
+}
+function aba(t){['p','a'].forEach(k=>{$('s-'+k).hidden=k!==t;$('bt-'+k).classList.toggle('on',k===t)});refresh(t)}
+/* ---------- painel ---------- */
+function grp(rows,k){const m={};rows.forEach(x=>{const o=m[x[k]]=m[x[k]]||{n:x[k],nv:0,v:0,na:0,a:0,mx:0};if(x.d<0){o.nv++;o.v+=x.val;o.mx=Math.max(o.mx,-x.d)}else{o.na++;o.a+=x.val}});return Object.values(m).sort((a,b)=>(b.v+b.a)-(a.v+a.a))}
+function tbl(id,rows,k,label){const q=grp(rows,k),T=S(rows,x=>x.val),mx=Math.max(1,...q.map(x=>x.v+x.a)),tv=S(q,x=>x.v),ta=S(q,x=>x.a);
+  $(id).innerHTML=`<thead><tr><th>${label}</th><th class="n">Tít. vencidos</th><th class="n">Vencido</th><th class="n">Tít. a vencer</th><th class="n">A vencer</th><th class="n">Total</th><th class="n">% do total</th><th class="n">Maior atraso (dias)</th></tr></thead><tbody>`+
+  q.map(x=>`<tr><td><strong>${esc(x.n)}</strong></td><td class="n">${nm(x.nv)}</td><td class="n ${x.v?'neg':''}">${x.v?R$(x.v):'—'}</td><td class="n">${nm(x.na)}</td><td class="n ${x.a?'pos':''}">${x.a?R$(x.a):'—'}</td><td class="n"><span class="bar" style="width:${Math.round((x.v+x.a)/mx*60)}px"></span>${R$(x.v+x.a)}</td><td class="n">${T?pc((x.v+x.a)/T*100):'—'}</td><td class="n">${x.mx||'—'}</td></tr>`).join('')+
+  `</tbody><tfoot><tr><td>Total</td><td class="n">${nm(S(q,x=>x.nv))}</td><td class="n">${R$(tv)}</td><td class="n">${nm(S(q,x=>x.na))}</td><td class="n">${R$(ta)}</td><td class="n">${R$(tv+ta)}</td><td class="n">${T?'100,0%':'—'}</td><td class="n">${Math.max(0,...q.map(x=>x.mx))||'—'}</td></tr></tfoot>`}
+function faixas(id,rows,defs,tot){$(id).innerHTML=defs.map(f=>{const s=rows.filter(x=>f.t(x.d)),v=S(s,x=>x.val);return `<tr><td>${f.l}</td><td class="n">${nm(s.length)}</td><td class="n ${f.c}">${v?R$(v):'—'}</td><td class="n">${tot?pc(v/tot*100):'—'}</td></tr>`}).join('')}
+function rank(rows){const ps={};rows.forEach(x=>{(ps[x.p]=ps[x.p]||[]).push(x)});let h='';
+  Object.entries(ps).map(([p,a])=>[p,a,S(a,x=>x.val)]).sort((a,b)=>b[2]-a[2]).forEach(([p,a,T])=>{const m={};a.forEach(x=>{const o=m[x.c]=m[x.c]||{n:x.c,t:0,v:0,a:0};o.t++;if(x.d<0)o.v+=x.val;else o.a+=x.val});
+    h+=`<tr><td colspan="7" style="background:var(--hov);font-weight:700;color:var(--tx)">${esc(p)} <span style="font-weight:400;color:var(--mut)">· ${R$(T)} · ${a.length} títulos</span></td></tr>`+Object.values(m).sort((a,b)=>(b.v+b.a)-(a.v+a.a)).slice(0,5).map((o,i)=>`<tr><td>${i+1}º</td><td><strong>${esc(o.n)}</strong></td><td class="n">${o.t}</td><td class="n ${o.v?'neg':''}">${o.v?R$(o.v):'—'}</td><td class="n ${o.a?'pos':''}">${o.a?R$(o.a):'—'}</td><td class="n">${R$(o.v+o.a)}</td><td class="n">${pc((o.v+o.a)/T*100)}</td></tr>`).join('')});
+  $('tbT').innerHTML=h}
+function renderPainel(){
+  const rows=flt('p'),ven=rows.filter(x=>x.d<0),av=rows.filter(x=>x.d>=0),T=S(rows,x=>x.val),V=S(ven,x=>x.val),A=S(av,x=>x.val);
+  const mx=ven.length?Math.max(...ven.map(x=>-x.d)):0,pm=V?S(ven,x=>x.val*-x.d)/V:0;
+  const f=g('p','D'),c=g('p','G');
+  $('sub').textContent='Posição em '+dt(HOJE)+' · '+(g('p','E')||g('p','P')||g('p','R')||'Todas as regionais')+(f?' · '+$('pD').selectedOptions[0].text:'')+(c?' · '+c:'');
+  $('k1').textContent=R$(T);$('k1l').textContent=nm(rows.length)+' títulos';$('k2').textContent=R$(V);$('k2l').textContent=nm(ven.length)+' títulos';$('k3').textContent=R$(A);$('k3l').textContent=nm(av.length)+' títulos';
+  $('k4').textContent=T?pc(V/T*100):'—';$('k5').textContent=mx?mx+' dias':'—';$('k5l').textContent=mx?'Média ponderada: '+pm.toFixed(1).replace('.',',')+' dias':'Sem títulos vencidos';
+  faixas('tbV',ven,[{l:'1 a 10 dias',t:d=>d<0&&d>=-10,c:'neg'},{l:'11 a 20 dias',t:d=>d<-10&&d>=-20,c:'neg'},{l:'21 a 30 dias',t:d=>d<-20&&d>=-30,c:'neg'},{l:'Acima de 30 dias',t:d=>d<-30,c:'neg'}],V);
+  faixas('tbA',av,[{l:'Vence hoje',t:d=>d===0,c:'pos'},{l:'1 a 10 dias',t:d=>d>=1&&d<=10,c:'pos'},{l:'11 a 20 dias',t:d=>d>=11&&d<=20,c:'pos'},{l:'21 a 30 dias',t:d=>d>=21&&d<=30,c:'pos'},{l:'Acima de 30 dias',t:d=>d>30,c:'pos'}],A);
+  tbl('tR',rows,'r','Regional');tbl('tP',rows,'p','Praça');tbl('tE',rows,'e','Empreendimento');rank(rows);
+  const det=[...rows].sort((a,b)=>a.d-b.d||b.val-a.val);$('ssD').textContent=nm(det.length)+' títulos, do mais atrasado ao mais distante';
+  $('tbD').innerHTML=det.map(x=>`<tr><td>${esc(x.p)}</td><td>${esc(x.e)}</td><td>${esc(x.c)}</td><td class="n">${dt(x.v)}</td><td class="n"><span class="bd ${x.d<0?'r':'g'}">${x.d<0?(-x.d)+' d em atraso':x.d===0?'vence hoje':'vence em '+x.d+' d'}</span></td><td class="n">${R$(x.val)}</td><td class="n">${x.nf?R$(x.nf):'—'}</td></tr>`).join('')}
+/* ---------- seleção e extrato ---------- */
+const ord=(a,b)=>a.e.localeCompare(b.e)||a.v.localeCompare(b.v)||a.cr.localeCompare(b.cr);
+function renderPagar(){
+  shown=flt('a').sort(ord);
+  $('ssX').textContent=nm(shown.length)+' contas exibidas · marque as que deseja pagar';
+  $('tbX').innerHTML=shown.map(x=>`<tr class="${sel.has(x.id)?'on':''}"><td><input type="checkbox" data-id="${x.id}" ${sel.has(x.id)?'checked':''}></td><td>${esc(x.e)}</td><td class="n">${x.emp}</td><td>${esc(x.ob)}</td><td class="n">${x.pr}</td><td>${esc(x.cf)}</td><td>${esc(x.cr)}</td><td class="n">${dt(x.v)}</td><td class="n">${dt(x.pg)}</td><td class="n">${R$(x.val)}</td><td class="n">${x.nf?R$(x.nf):'—'}</td></tr>`).join('');
+  upd()}
+function upd(){
+  const s=D.filter(x=>sel.has(x.id)),n=shown.filter(x=>sel.has(x.id)).length,ca=$('chkAll');
+  ca.checked=shown.length>0&&n===shown.length;ca.indeterminate=n>0&&n<shown.length;
+  $('selInfo').innerHTML=s.length?`<b>${nm(s.length)}</b> selecionada(s) · Total a pagar <b>${R$(S(s,x=>x.val))}</b>`+(s.length>n?` <span style="color:var(--mut)">(${nm(s.length-n)} fora do filtro atual)</span>`:''):'Nenhuma conta selecionada';
+  $('btnExt').disabled=!s.length}
+function extrato(){
+  const s=D.filter(x=>sel.has(x.id)).sort(ord);if(!s.length)return;
+  const by={};s.forEach(x=>(by[x.e]=by[x.e]||[]).push(x));
+  const now=new Date(),dh=now.toLocaleDateString('pt-BR')+' '+now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+  let b='';Object.entries(by).forEach(([e,a])=>{
+    b+=a.map(x=>`<tr><td>${esc(x.e)}</td><td>${x.emp}</td><td>${esc(x.ob)}</td><td>${x.pr}</td><td>${esc(x.cf)}</td><td>${esc(x.cr)}</td><td>${dt(x.v)}</td><td>${dt(x.pg)}</td><td style="text-align:right">${R$(x.val)}</td><td style="text-align:right">${x.nf?R$(x.nf):'—'}</td></tr>`).join('');
+    b+=`<tr class="sub"><td colspan="8">Subtotal — ${esc(e)} (${a.length})</td><td style="text-align:right">${R$(S(a,x=>x.val))}</td><td style="text-align:right">${R$(S(a,x=>x.nf))}</td></tr>`});
+  $('print').innerHTML=`<h1>Extrato de contas a pagar</h1><div class="pm">Emitido em ${dh} · ${nm(s.length)} título(s) · Posição de ${dt(HOJE)}</div><table><thead><tr><th>Empreendimento</th><th>Empresa</th><th>Obra</th><th>Proc.</th><th>Confirmado</th><th>Cheque nominal</th><th>Vencimento</th><th>Prorrogação</th><th>Valor a pagar</th><th>Valor doc. fiscal</th></tr></thead><tbody>${b}</tbody><tfoot><tr><td colspan="8">TOTAL GERAL</td><td style="text-align:right">${R$(S(s,x=>x.val))}</td><td style="text-align:right">${R$(S(s,x=>x.nf))}</td></tr></tfoot></table>`;
+  window.print()}
+$('tbX').addEventListener('change',e=>{const i=+e.target.dataset.id;e.target.checked?sel.add(i):sel.delete(i);e.target.closest('tr').classList.toggle('on',e.target.checked);upd()});
+$('chkAll').addEventListener('change',e=>{shown.forEach(x=>e.target.checked?sel.add(x.id):sel.delete(x.id));renderPagar()});
+$('btnClr').onclick=()=>{sel.clear();renderPagar()};$('btnExt').onclick=extrato;
+/* ---------- acesso ---------- */
+function start(p){L=p.L;HOJE=p.hoje;D=p.rows.map((a,i)=>({id:i,r:L.R[a[0]],p:L.P[a[1]],e:L.E[a[2]],d:a[3],cr:a[4],c:cl(a[4]),v:a[5],val:a[6],nf:a[7],g:L.G[a[8]],emp:a[9],ob:a[10],pr:a[11],cf:a[12],pg:a[13]}));initF('p');initF('a');renderPainel()}
+const b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+async function unlock(pw){
+  const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
+  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(ENC.s),iterations:ENC.n,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
+  return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(ENC.i)},key,b64(ENC.c))))}
+async function entrar(){const pw=$('gpw').value,er=$('gerr'),bt=$('gbt');if(!pw){er.textContent='Digite a senha.';return}
+  bt.disabled=true;er.textContent='';
+  try{const p=await unlock(pw);start(p);$('gate').style.display='none';$('app').style.display='block'}
+  catch(e){er.textContent=(window.crypto&&crypto.subtle)?'Senha incorreta.':'Abra a página por um endereço https.';bt.disabled=false;$('gpw').select()}}
+$('gpw').addEventListener('keydown',e=>{if(e.key==='Enter')entrar()});$('gpw').focus();
+</script>
+</body>
+</html>
